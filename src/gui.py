@@ -53,7 +53,7 @@ class GUI:
     self.prg_hash_file = tk.ttk.Progressbar(self.frame, length=400)
 
     # Position GUI elements
-    self.hash_type.grid(row=0, column=0, columnspan=2, padx=5, pady=5)
+    self.hash_type.grid(row=0, column=0, columnspan=3, padx=5, pady=5)
     #String hashing section
     self.lbl_string_hash.grid(row=1,column=0, padx=5, pady=5)
     self.in_string_hash.grid(row=1,column=1, columnspan=2, padx=5, pady=5)
