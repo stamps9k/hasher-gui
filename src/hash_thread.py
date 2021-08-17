@@ -1,7 +1,7 @@
 import threading
 from collections import namedtuple
 
-import sha256
+import hasher
 from reporter import Reporter
 
 HashResult = namedtuple("HashResult", ("type", "hash"))
@@ -42,12 +42,12 @@ class HashThread(threading.Thread):
   def sha256(self):
     if self.hash_string != None:
       to_hash = self.hash_string
-      hash_result = HashResult("String", sha256.hash_string(to_hash))
+      hash_result = HashResult("String", hasher.hash_string(to_hash, None))
       self.queue.put(hash_result)
     elif self.hash_file != None:
       reporter = Reporter(self.queue)
       to_hash = self.hash_file
-      hash_result = HashResult("File", sha256.hash_file(to_hash, reporter))
+      hash_result = HashResult("File", hasher.hash_file(to_hash, reporter))
       self.queue.put(hash_result)
     else:
       print("SHA256 called without a hash target. Should not happen.")
